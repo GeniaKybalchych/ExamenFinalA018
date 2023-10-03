@@ -16,7 +16,7 @@ def ajouter_projet():
         data = request.json
 
         # Appelez le service DAO pour insérer les données dans la BD
-        response = requests.post(f'http://127.0.0.1:5001/projets', json=data)
+        response = requests.post(f'http://host.docker.internal:5001/projets', json=data)
         response_data = response.json()
         return jsonify(projet=response_data), response.status_code
     except Exception as e:
@@ -29,7 +29,7 @@ def get_projet(codeProjet):
     try:
 
         # Appelez le service DAO pour rechercher les données dans la BD
-        response = requests.get(f'http://127.0.0.1:5001/projets/{codeProjet}')
+        response = requests.get(f'http://host.docker.internal:5001/projets/{codeProjet}')
 
         response_data = response.json()
         return jsonify(response_data), response.status_code
